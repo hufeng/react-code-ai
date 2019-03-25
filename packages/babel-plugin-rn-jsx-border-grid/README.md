@@ -30,7 +30,7 @@ const Hello = () => (
 );
 ```
 
-> transform
+> transform ===>
 
 ```javascript
 /*
@@ -47,4 +47,48 @@ const Hello = () => <View style={{
     borderStyle: "dotted"
   }}>hello world</Text>
     </View>;"
+```
+
+```javascript
+/*
+  @showGrid
+*/
+const Hello = () => (
+  <View style={{ flex: 1 }}>
+    <Text style={{ color: 'yellow' }}>hello world</Text>
+  </View>
+);
+```
+
+> transfrom ===>
+
+```javascript
+/*
+@showGrid
+*/
+const Hello = () => (
+  <View
+    style={[
+      { flex: 1 },
+      {
+        borderWidth: 1,
+        borderColor: '#FF1493',
+        borderStyle: 'dotted'
+      }
+    ]}
+  >
+    <Text
+      style={[
+        { color: 'yellow' },
+        {
+          borderWidth: 1,
+          borderColor: '#FF1493',
+          borderStyle: 'dotted'
+        }
+      ]}
+    >
+      hello world
+    </Text>
+  </View>
+);
 ```
