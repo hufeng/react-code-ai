@@ -1,18 +1,17 @@
 const { parse } = require('jest-docblock');
 
 const colors = [
-  // yellow
   '#FFFF00',
-  // Gold
   '#FFD700',
-  //Coral
   '#FF7F50',
-  //DeepPink
   '#FF1493',
-  //Fushsia
   '#FF00FF',
-  //Lime
-  '#00FF00'
+  '#00FF00',
+  '#CC6633',
+  '#00FF33',
+  '#33FFCC',
+  '#9900FF',
+  '#CC0099'
 ];
 
 const borderStyle = t => {
@@ -24,20 +23,29 @@ const borderStyle = t => {
   ]);
 };
 
-const enableShowGrid = code => {
+const parseShowGrid = code => {
   const pragmas = parse(code);
-  return typeof pragmas['showGrid'] !== 'undefined';
+  const showGrid = pragmas['showGrid'];
+
+  return {
+    noShowGrid: typeof showGrid === 'undefined',
+    recMode: showGrid === 'rec'
+  };
 };
 
 module.exports = function(babel) {
   const { types: t } = babel;
+  let pragmas = {};
 
   return {
     visitor: {
+      Program(path) {
+        pragmas = parseShowGrid(path.hub.file.code);
+      },
       JSXOpeningElement(path) {
         const { node } = path;
         //如果没有 @showGrid 的pragma标记直接返回
-        if (!enableShowGrid(path.hub.file.code)) {
+        if (pragmas.noShowGrid) {
           return;
         }
 
