@@ -1,10 +1,4 @@
-const {
-  extract,
-  strip,
-  parse,
-  parseWithComments,
-  print
-} = require('jest-docblock');
+const { parse } = require('jest-docblock');
 
 const colors = [
   // yellow
@@ -47,7 +41,11 @@ module.exports = function(babel) {
           return;
         }
 
-        const attr = node.attributes.find(attr => attr.name.name === 'style');
+        // fixed: 当jsx使用spread object属性的时候，没有name
+        // <Text {...props}></Text>
+        const attr = node.attributes.find(
+          attr => attr.name && attr.name.name === 'style'
+        );
 
         if (attr) {
           if (t.isArrayExpression(attr.value.expression)) {
