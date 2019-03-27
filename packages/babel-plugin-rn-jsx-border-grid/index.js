@@ -15,7 +15,7 @@ const colors = [
 ];
 
 const borderStyle = t => {
-  const color = colors[Math.floor(Math.random() * 6)];
+  const color = colors[Math.floor(Math.random() * 11)];
   return t.objectExpression([
     t.ObjectProperty(t.identifier('borderWidth'), t.numericLiteral(1)),
     t.ObjectProperty(t.identifier('borderColor'), t.stringLiteral(color)),
@@ -28,8 +28,7 @@ const parseShowGrid = code => {
   const showGrid = pragmas['showGrid'];
 
   return {
-    noShowGrid: typeof showGrid === 'undefined',
-    recMode: showGrid === 'rec'
+    noShowGrid: typeof showGrid === 'undefined'
   };
 };
 
