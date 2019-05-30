@@ -64,24 +64,36 @@ module.exports = function(babel) {
       JSXAttribute(path) {
         const { node } = path;
         const name = node.name.name;
-        const val = node.value;
 
+        // 过滤掉非style属性
         if (name !== 'style') {
           return;
         }
 
-        // 过滤出来style={{}} 这样的属性
-        // 遍历style={[...]}
-        if (
-          t.isJSXExpressionContainer(val) &&
-          t.isObjectExpression(val.expression)
-        ) {
+        const value = node.value;
+
+        // 单个对象
+        if (t.isObjectExpression(value.expression)) {
           const styleName = 'style' + ++i;
-          inlineStyle.push({ styleName, val: val.expression });
-          val.expression = t.jSXMemberExpression(
+          inlineStyle.push({ styleName, val: value.expression });
+          value.expression = t.jSXMemberExpression(
             t.jSXIdentifier('ai'),
             t.jSXIdentifier(styleName)
           );
+        }
+        // 数组元素
+        else if (t.isArrayExpression(value.expression)) {
+          value.expression.elements = value.expression.elements.map(elem => {
+            if (t.isObjectExpression(elem)) {
+              const styleName = 'style' + ++i;
+              inlineStyle.push({ styleName, val: elem });
+              return t.jSXMemberExpression(
+                t.jSXIdentifier('ai'),
+                t.jSXIdentifier(styleName)
+              );
+            }
+            return elem;
+          });
         }
       }
     }

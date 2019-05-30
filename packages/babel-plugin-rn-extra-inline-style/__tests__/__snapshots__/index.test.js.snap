@@ -23,3 +23,17 @@ const ai = StyleSheet.create({
   style1: { flex: 1, backgroundColor: 'red' }
 });"
 `;
+
+exports[`extra inline style with import StyleSheet and multiple style 1`] = `
+"
+import { StyleSheet } from 'react-native';
+
+const Hello = () => <View style={ai.style1}>
+      <Text style={styles.text}>hello world</Text>      
+      <Text style={[styles.text, ai.style2]}>hello world</Text>      
+    </View>;
+const ai = StyleSheet.create({
+  style1: { flex: 1, backgroundColor: 'red' },
+  style2: { color: 'yellow', fontSize: 12 }
+});"
+`;
