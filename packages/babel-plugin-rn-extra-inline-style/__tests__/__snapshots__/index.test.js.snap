@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`extra inline stle without import StyleSheet 1`] = `
+"import { StyleSheet as _StyleSheet } from 'react-native';
+
+const Hello = () => <View style={ai.style1}>
+        <Text style={styles.text}>hello world</Text>      
+      </View>;
+
+const ai = _StyleSheet.create({
+  style1: { flex: 1, backgroundColor: 'red' }
+});"
+`;
+
+exports[`extra inline style with import StyleSheet 1`] = `
+"
+import { StyleSheet } from 'react-native';
+
+const Hello = () => <View style={ai.style1}>
+      <Text style={styles.text}>hello world</Text>      
+    </View>;
+const ai = StyleSheet.create({
+  style1: { flex: 1, backgroundColor: 'red' }
+});"
+`;

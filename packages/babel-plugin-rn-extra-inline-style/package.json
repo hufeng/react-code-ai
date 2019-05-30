@@ -1,0 +1,9 @@
+{
+  "name": "babel-plugin-rn-extra-inline-style",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/helper-module-imports": "^7.0.0"
+  }
+}
