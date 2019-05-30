@@ -12,6 +12,16 @@ const ai = _StyleSheet.create({
 });"
 `;
 
+exports[`extra inline stle without import StyleSheet and with condition style 1`] = `
+"
+const Hello = () => <View style={[ai._45ed256f, { alignItems: isIOS ? \\"center\\" : \\"left\\" }]}>
+        <Text style={styles.text}>hello world</Text>      
+      </View>;
+const ai = StyleSheet.create({
+  _45ed256f: { flex: 1, backgroundColor: 'red' }
+});"
+`;
+
 exports[`extra inline style with import StyleSheet 1`] = `
 "
 import { StyleSheet } from 'react-native';
@@ -34,7 +44,20 @@ const Hello = () => <View style={ai._45ed256f3c}>
     </View>;
 const ai = StyleSheet.create({
   _45ed256f3c: { flex: 1, backgroundColor: 'red' },
-  _bbb3854cf5: { color: 'yellow', fontSize: 12 },
+  _bbb3854cf5: { color: 'yellow', fontSize: 12 }
+});"
+`;
+
+exports[`extra inline style with import StyleSheet and multiple style and condition style 1`] = `
+"
+import { StyleSheet } from 'react-native';
+
+const Hello = () => <View style={ai._45ed256f3c}>
+      <Text style={styles.text}>hello world</Text>      
+      <Text style={[styles.text, ai._bbb3854cf5, { alignItems: isIOS ? \\"center\\" : \\"left\\" }]}>hello world</Text>      
+    </View>;
+const ai = StyleSheet.create({
+  _45ed256f3c: { flex: 1, backgroundColor: 'red' },
   _bbb3854cf5: { color: 'yellow', fontSize: 12 }
 });"
 `;
