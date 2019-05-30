@@ -48,7 +48,7 @@ it('extra inline style with import StyleSheet and multiple style', () => {
 `;
 
   const { code } = babel.transform(tpl, {
-    plugins: [extraInlineStyle, 'syntax-jsx']
+    plugins: [[extraInlineStyle, { hash: 10 }], 'syntax-jsx']
   });
 
   expect(code).toMatchSnapshot();

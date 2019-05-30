@@ -3,12 +3,12 @@
 exports[`extra inline stle without import StyleSheet 1`] = `
 "import { StyleSheet as _StyleSheet } from 'react-native';
 
-const Hello = () => <View style={ai.style1}>
+const Hello = () => <View style={ai._45ed256f}>
         <Text style={styles.text}>hello world</Text>      
       </View>;
 
 const ai = _StyleSheet.create({
-  style1: { flex: 1, backgroundColor: 'red' }
+  _45ed256f: { flex: 1, backgroundColor: 'red' }
 });"
 `;
 
@@ -16,11 +16,11 @@ exports[`extra inline style with import StyleSheet 1`] = `
 "
 import { StyleSheet } from 'react-native';
 
-const Hello = () => <View style={ai.style1}>
+const Hello = () => <View style={ai._45ed256f}>
       <Text style={styles.text}>hello world</Text>      
     </View>;
 const ai = StyleSheet.create({
-  style1: { flex: 1, backgroundColor: 'red' }
+  _45ed256f: { flex: 1, backgroundColor: 'red' }
 });"
 `;
 
@@ -28,12 +28,13 @@ exports[`extra inline style with import StyleSheet and multiple style 1`] = `
 "
 import { StyleSheet } from 'react-native';
 
-const Hello = () => <View style={ai.style1}>
+const Hello = () => <View style={ai._45ed256f3c}>
       <Text style={styles.text}>hello world</Text>      
-      <Text style={[styles.text, ai.style2]}>hello world</Text>      
+      <Text style={[styles.text, ai._bbb3854cf5]}>hello world</Text>      
     </View>;
 const ai = StyleSheet.create({
-  style1: { flex: 1, backgroundColor: 'red' },
-  style2: { color: 'yellow', fontSize: 12 }
+  _45ed256f3c: { flex: 1, backgroundColor: 'red' },
+  _bbb3854cf5: { color: 'yellow', fontSize: 12 },
+  _bbb3854cf5: { color: 'yellow', fontSize: 12 }
 });"
 `;
