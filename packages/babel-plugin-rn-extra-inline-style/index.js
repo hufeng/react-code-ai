@@ -116,8 +116,8 @@ module.exports = function(babel) {
 
           if (unNormalLiteralStyle.length > 0) {
             if (t.isArrayExpression(node.value.expression)) {
-              node.value.expression = t.arrayExpression(
-                [node.value.expression].concat(unNormalLiteralStyle)
+              node.value.expression.elements = node.value.expression.elements.concat(
+                unNormalLiteralStyle
               );
             } else {
               node.value.expression = t.arrayExpression(

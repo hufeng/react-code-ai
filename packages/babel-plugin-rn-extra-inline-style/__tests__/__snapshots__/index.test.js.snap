@@ -56,11 +56,11 @@ import { StyleSheet } from 'react-native';
 
 const Hello = () => <View style={ai._45ed256f3c}>
       <Text style={styles.text}>hello world</Text>
-      <Text style={[[styles.text, ai._bbb3854cf5, isIOS ? ai._2339851f83 : ai._ffd3cc587e], { alignItems: isIOS ? \\"center\\" : \\"left\\" }]}>
+      <Text style={[styles.text, ai._bbb3854cf5, isIOS ? ai._2339851f83 : ai._ffd3cc587e, { alignItems: isIOS ? \\"center\\" : \\"left\\" }]}>
         hello world
      </Text>
      <Text style={[ai._66c87fbea2, isIOS && ai._a89b8060b5]}>hello</Text>
-     <Text style={[[ai._66c87fbea2, isIOS && ai._a89b8060b5], { ...StyleSheet.absoluteFill }]}>hello</Text>
+     <Text style={[ai._66c87fbea2, isIOS && ai._a89b8060b5, { ...StyleSheet.absoluteFill }]}>hello</Text>
     </View>;
 const ai = StyleSheet.create({
   _45ed256f3c: { flex: 1, backgroundColor: 'red' },
