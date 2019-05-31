@@ -5,7 +5,7 @@ it('extra inline stle without import StyleSheet', () => {
   const tpl = `
     const Hello = () => (
       <View style={{flex: 1, backgroundColor: 'red'}}>
-        <Text style={styles.text}>hello world</Text>      
+        <Text style={styles.text}>hello world</Text>
       </View>
     );
   `;
@@ -21,7 +21,7 @@ it('extra inline stle without import StyleSheet and with condition style', () =>
   const tpl = `
     const Hello = () => (
       <View style={{flex: 1, backgroundColor: 'red', alignItems: isIOS ? "center" : "left"}}>
-        <Text style={styles.text}>hello world</Text>      
+        <Text style={styles.text}>hello world</Text>
       </View>
     );
   `;
@@ -39,7 +39,7 @@ it('extra inline style with import StyleSheet', () => {
 
   const Hello = () => (
     <View style={{flex: 1, backgroundColor: 'red'}}>
-      <Text style={styles.text}>hello world</Text>      
+      <Text style={styles.text}>hello world</Text>
     </View>
   );
 `;
@@ -57,8 +57,8 @@ it('extra inline style with import StyleSheet and multiple style', () => {
 
   const Hello = () => (
     <View style={{flex: 1, backgroundColor: 'red'}}>
-      <Text style={styles.text}>hello world</Text>      
-      <Text style={[styles.text, {color: 'yellow', fontSize: 12}]}>hello world</Text>      
+      <Text style={styles.text}>hello world</Text>
+      <Text style={[styles.text, {color: 'yellow', fontSize: 12}]}>hello world</Text>
     </View>
   );
 `;
@@ -76,14 +76,27 @@ it('extra inline style with import StyleSheet and multiple style and condition s
 
   const Hello = () => (
     <View style={{flex: 1, backgroundColor: 'red'}}>
-      <Text style={styles.text}>hello world</Text>      
-      <Text style={[styles.text, {color: 'yellow', fontSize: 12, alignItems: isIOS ? "center" : "left"}]}>hello world</Text>      
+      <Text style={styles.text}>hello world</Text>
+      <Text style={[
+        styles.text,
+        {color: 'yellow', fontSize: 12, alignItems: isIOS ? "center" : "left"},
+        isIOS ? {justifyContent: "center"} : {justifyContent: "left"}]}
+      >
+        hello world
+     </Text>
+     <Text style={[{color: "orange"}, isIOS && {fontSize: 20}]}>hello</Text>
+     <Text style={[{color: "orange", ...StyleSheet.absoluteFill}, isIOS && {fontSize: 20}]}>hello</Text>
     </View>
   );
 `;
 
   const { code } = babel.transform(tpl, {
-    plugins: [[extraInlineStyle, { hash: 10 }], 'syntax-jsx']
+    plugins: [
+      [extraInlineStyle, { hash: 10 }],
+      'syntax-jsx',
+      'transform-es2015-spread',
+      'transform-object-rest-spread'
+    ]
   });
 
   expect(code).toMatchSnapshot();

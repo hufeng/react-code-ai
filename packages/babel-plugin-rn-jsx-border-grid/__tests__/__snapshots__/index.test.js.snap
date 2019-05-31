@@ -7,12 +7,12 @@ exports[`babel-plugin-rn-jsx-border-grid test suite test @showGrid and no style 
 */
 const Hello = () => <View style={{
   borderWidth: 1,
-  borderColor: \\"#9900FF\\",
+  borderColor: \\"#CC0099\\",
   borderStyle: \\"dotted\\"
 }}>
       <Text style={{
     borderWidth: 1,
-    borderColor: \\"#FFD700\\",
+    borderColor: \\"#33FFCC\\",
     borderStyle: \\"dotted\\"
   }}>hello world</Text>
     </View>;"
@@ -25,12 +25,12 @@ exports[`babel-plugin-rn-jsx-border-grid test suite test @showGriud and has ref 
 */
 const Hello = () => <View style={[styles.container, {
   borderWidth: 1,
-  borderColor: '#CC0099',
+  borderColor: '#CC6633',
   borderStyle: 'dotted'
 }]}>
       <Text style={[styles.text, hasBackground && { backgroundColor: 'yellow' }, {
     borderWidth: 1,
-    borderColor: '#33FFCC',
+    borderColor: '#CC0099',
     borderStyle: 'dotted'
   }]}>
         hello world
@@ -45,12 +45,12 @@ exports[`babel-plugin-rn-jsx-border-grid test suite test @showGriud and has styl
 */
 const Hello = () => <View style={[{ flex: 1 }, {
   borderWidth: 1,
-  borderColor: '#FF00FF',
+  borderColor: '#CC6633',
   borderStyle: 'dotted'
 }]}>
       <Text style={[{ color: 'yellow' }, {
     borderWidth: 1,
-    borderColor: '#FF1493',
+    borderColor: '#FF00FF',
     borderStyle: 'dotted'
   }]}>hello world</Text>
     </View>;"

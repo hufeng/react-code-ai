@@ -4,7 +4,7 @@ exports[`extra inline stle without import StyleSheet 1`] = `
 "import { StyleSheet as _StyleSheet } from 'react-native';
 
 const Hello = () => <View style={ai._45ed256f}>
-        <Text style={styles.text}>hello world</Text>      
+        <Text style={styles.text}>hello world</Text>
       </View>;
 
 const ai = _StyleSheet.create({
@@ -13,11 +13,13 @@ const ai = _StyleSheet.create({
 `;
 
 exports[`extra inline stle without import StyleSheet and with condition style 1`] = `
-"
+"import { StyleSheet as _StyleSheet } from \\"react-native\\";
+
 const Hello = () => <View style={[ai._45ed256f, { alignItems: isIOS ? \\"center\\" : \\"left\\" }]}>
-        <Text style={styles.text}>hello world</Text>      
+        <Text style={styles.text}>hello world</Text>
       </View>;
-const ai = StyleSheet.create({
+
+const ai = _StyleSheet.create({
   _45ed256f: { flex: 1, backgroundColor: 'red' }
 });"
 `;
@@ -27,7 +29,7 @@ exports[`extra inline style with import StyleSheet 1`] = `
 import { StyleSheet } from 'react-native';
 
 const Hello = () => <View style={ai._45ed256f}>
-      <Text style={styles.text}>hello world</Text>      
+      <Text style={styles.text}>hello world</Text>
     </View>;
 const ai = StyleSheet.create({
   _45ed256f: { flex: 1, backgroundColor: 'red' }
@@ -39,8 +41,8 @@ exports[`extra inline style with import StyleSheet and multiple style 1`] = `
 import { StyleSheet } from 'react-native';
 
 const Hello = () => <View style={ai._45ed256f3c}>
-      <Text style={styles.text}>hello world</Text>      
-      <Text style={[styles.text, ai._bbb3854cf5]}>hello world</Text>      
+      <Text style={styles.text}>hello world</Text>
+      <Text style={[styles.text, ai._bbb3854cf5]}>hello world</Text>
     </View>;
 const ai = StyleSheet.create({
   _45ed256f3c: { flex: 1, backgroundColor: 'red' },
@@ -53,11 +55,19 @@ exports[`extra inline style with import StyleSheet and multiple style and condit
 import { StyleSheet } from 'react-native';
 
 const Hello = () => <View style={ai._45ed256f3c}>
-      <Text style={styles.text}>hello world</Text>      
-      <Text style={[styles.text, ai._bbb3854cf5, { alignItems: isIOS ? \\"center\\" : \\"left\\" }]}>hello world</Text>      
+      <Text style={styles.text}>hello world</Text>
+      <Text style={[[styles.text, ai._bbb3854cf5, isIOS ? ai._2339851f83 : ai._ffd3cc587e], { alignItems: isIOS ? \\"center\\" : \\"left\\" }]}>
+        hello world
+     </Text>
+     <Text style={[ai._66c87fbea2, isIOS && ai._a89b8060b5]}>hello</Text>
+     <Text style={[[ai._66c87fbea2, isIOS && ai._a89b8060b5], { ...StyleSheet.absoluteFill }]}>hello</Text>
     </View>;
 const ai = StyleSheet.create({
   _45ed256f3c: { flex: 1, backgroundColor: 'red' },
-  _bbb3854cf5: { color: 'yellow', fontSize: 12 }
+  _bbb3854cf5: { color: 'yellow', fontSize: 12 },
+  _2339851f83: { justifyContent: \\"center\\" },
+  _ffd3cc587e: { justifyContent: \\"left\\" },
+  _66c87fbea2: { color: \\"orange\\" },
+  _a89b8060b5: { fontSize: 20 }
 });"
 `;
